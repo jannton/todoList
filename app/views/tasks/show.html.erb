@@ -1,0 +1,22 @@
+<h1> Displaying Created/Updated Task </h1>
+<p>
+  <strong>Name:</strong>
+  <%= @task.task_name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @task.category %>
+</p>
+
+<p>
+  <strong>Due Date:</strong>
+  <%= @task.due_date %>
+</p>
+
+<%= link_to "Back to View All Tasks", tasks_path %>

@@ -1,0 +1,50 @@
+This was previous editing page before creating partial
+
+<h1>Editing Task</h1>
+
+<%# method: :patch tells rails that it is a PATCH HTTP method to update using rest%>
+<%= form_for :task, url: task_path(@task), method: :patch do |f| %>
+
+  <%# allowing user to know that they cannot leave name space blank %>
+<% if @task.errors.any? %>
+  	<div id="error_explanation">
+  		<h2>
+  			<%= @task.errors[:task_name].present? ? "has-error" : "" %> prohibited this task from being saved:
+  		</h2>
+  		<ul>
+  			<% @task.errors.full_messages.each do |msg| %>
+  				<li><%= msg%></li>
+  			<% end %>
+  		</ul>
+  	</div>
+<% end %>
+
+  <p>
+    <%= f.label :Name, "Name:" %><br>
+    <%= f.text_field :task_name%>
+  </p>
+ 
+  <p>
+    <%= f.label :description, "Description:" %><br>
+    <%= f.text_area :description %>
+  </p>
+
+   <p>
+    <%= f.label :category , "Category, (e.g., School, Work, etc.):" %><br>
+    <%= f.text_area :category %>
+  </p>
+
+   <p>
+    <%= f.label :due_date, "Due Date (YYYY-MM-DD):" %><br>
+    <%= f.text_area :due_date %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<br>
+<%= link_to 'Back', task_path %>
+
+
