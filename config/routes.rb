@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   #using member because dealing with only one task
   #takes a new action completed in controller, and http request (:get) to get info
   ##takes a new action complete in controller, and http request (:put) to updating model
-  resources :tasks 
+  resources :tasks do
+    put 'completed', on: :collection
+  end
 
   root 'tasks#index'
 

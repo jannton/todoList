@@ -5,9 +5,8 @@ class TasksController < ApplicationController
   	#@tasks = Task.all
 
   	#creating instance that contains tasks attribute with null value"
-  	@incomplete_tasks = Task.where("completed_at IS NULL")
-  	#creating instance that contains tasks attribute with NOT null value"
-  	@completed_tasks = Task.where("completed_at IS NOT NULL")
+  	@incomplete_tasks = Task.where(:checked => false)
+  	@completed_tasks = Task.where(:checked => true)
   end
 
   #(:id) tells rails this expects an id of the task in the parameter 
@@ -76,11 +75,9 @@ class TasksController < ApplicationController
   	redirect_to tasks_path
   end
 
-  def complete
-  	@task = Task.find(params[:id])
-  	@task.update_attribute :completed_at, Time.now
-  	flash[:notice] = "Marked task as completed!!"
-  	redirect_to completed_tasks_path
+  def completed
+  	Task.where( :id => params[:task_ids] ).update_all( :checked => true )
+  	redirect_to tasks_path
   end 
 
 
