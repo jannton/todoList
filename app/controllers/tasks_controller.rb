@@ -3,22 +3,17 @@ class TasksController < ApplicationController
   #display all tasks in table 
   def index
   	#@tasks = Task.all
+  	@task = Task.new
 
   	#creating instance that contains tasks attribute with null value"
   	@incomplete_tasks = Task.where(:checked => false)
   	@completed_tasks = Task.where(:checked => true)
   end
 
-  #(:id) tells rails this expects an id of the task in the parameter 
-  def show 
-  	@task = Task.find(params[:id])
-  end
-
   #creating a new task
   def new
   	@task = Task.new
   end
-
 
   #edit that specific task/object
   def edit
@@ -31,15 +26,15 @@ class TasksController < ApplicationController
 
   	#it is able to save a new task 
   	if @task.save
-  		flash[:notice] = 'Successfully added new task!'
+  		flash[:notice] = 'Successfully added new task.'
   		#if it is able to save the task bc it passes the validation
-  		#redirect to the specific record with an id
-  		#which is pretty much 'show' or tasks#show it 
-  		redirect_to @task
+  		#redirect home page
+  		redirect_to root_path
   	else
+  		flash[:notice] = 'Unable to add task!'
   		#if we are unable to save the task bc it fails the validation then
-  		#render the same request form 
-  		render "new"
+  		#go back to home page with task form
+  		redirect_to :back
   	end
   end
   #*******END*******#
@@ -51,15 +46,15 @@ class TasksController < ApplicationController
 
   	#it is able to update
   	if @task.update(task_params)
-  		flash[:notice] = 'Successfully updated task!'
+  		flash[:notice] = 'Successfully updated task.'
   		#if it is able to update the task object bc it passes the validation
-  		#redirect to the specific record with an id
-  		#which is pretty much 'show' or tasks#show it 
-  		redirect_to @task
+  		#redirect home page
+  		redirect_to root_path
   	else
+  		flash[:notice] = 'Unable to edit task!'
   		#if we are unable to update the task bc it fails the validation then
-  		#render the same request form 
-  		render 'edit'
+  		#go back to home page with task form
+  		redirect_to :back
   	end
   end
   #*******END*******#
@@ -69,14 +64,16 @@ class TasksController < ApplicationController
   	@task = Task.find(params[:id])
   	#destroy the task/resource
   	@task.destroy
-  	flash[:notice] = 'Successfully deleted task!'
+  	flash[:notice] = 'Successfully deleted task.'
 
   	#redirect to index (the prefix name + _path)
   	redirect_to tasks_path
   end
 
+
   def completed
   	Task.where( :id => params[:task_ids] ).update_all( :checked => true )
+  	flash[:notice] = 'Successfully completed tasks.'
   	redirect_to tasks_path
   end 
 

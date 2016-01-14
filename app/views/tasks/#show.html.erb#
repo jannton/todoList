@@ -1,0 +1,12 @@
+<h1> Displaying Created/Updated Task </h1>
+<p>
+  <strong>Name:</strong>
+  <%= @task.task_name %>
+</p>
+
+<%= link_to "Done.", tasks_path %>
+
+  #(:id) tells rails this expects an id of the task in the parameter 
+  def show 
+  	#@task = Task.find(params[:id])
+  end
