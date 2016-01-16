@@ -75,7 +75,14 @@ class TasksController < ApplicationController
     #find all tasks that are in the task_ids array and update their checked boolean to true
     #can see activity in development log if need be to see what tasks(by id) is in the selected array
   	Task.where( :id => params[:task_ids] ).update_all( :checked => true )
-  	flash[:notice] = 'Successfully completed tasks.'
+    @task_array = Task.where( :id => params[:task_ids] ).length
+
+    if(@task_array == 1)
+  	  flash[:notice] = 'Successfully completed task.'
+    else
+      flash[:notice] = 'Successfully completed tasks.'
+    end
+
   	redirect_to tasks_path
   end 
 

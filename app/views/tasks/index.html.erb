@@ -24,7 +24,8 @@
 		<% @completed_tasks.each do |task| %>
 			<tr>
 			<%# column for each attribute %>
-			<td><%= check_box_tag "task_ids[]", task.id, :id => "task.id_#{task.id}" -%></td>
+			<%# seperate array for completed tasks, this will allow if/else statement in complete action in controller work for flash notice %>
+			<td><%= check_box_tag "task_idss[]", task.id, :id => "task.id_#{task.id}" -%></td>
 			<td><%= task.task_name %></td>
 			<td><%= link_to 'Edit', edit_task_path(task) %></td>
 			<td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?"} %></td>
