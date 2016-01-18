@@ -6,7 +6,10 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag controller_name if controller_name == "task" && action_name == "home" %>
+  <%= stylesheet_link_tag 'tasks' %>
 </head>
+
+
 <body>
 
 <%= yield %>

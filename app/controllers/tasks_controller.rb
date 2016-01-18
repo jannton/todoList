@@ -75,6 +75,8 @@ class TasksController < ApplicationController
     #find all tasks that are in the task_ids array and update their checked boolean to true
     #can see activity in development log if need be to see what tasks(by id) is in the selected array
   	Task.where( :id => params[:task_ids] ).update_all( :checked => true )
+    #how to select and only uncheck one in array???
+    #Task.where( :id => params[:task_idss] ).update_all( :checked => false )
     @task_array = Task.where( :id => params[:task_ids] ).length
 
     if(@task_array == 1)

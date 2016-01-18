@@ -4,14 +4,8 @@
 <% end %>
 
 <h1> To Do --></h1>
-<h2>Listing All Tasks</h2>
 <%= form_tag completed_tasks_path, :method => :put do %>
-	<table>
-		<%# row for each attribute %>
-		<tr> 
-			<th>Task</th>
-		</tr>
-
+	<table id="t01">
 		<% @incomplete_tasks.each do |task| %>
 			<tr>
 			<%# column for each attribute %>
@@ -32,6 +26,7 @@
 			</tr>
 		<% end %>
 	</table>
+	<br>
 	<%= submit_tag 'Mark as Completed' %>
 <% end %>
 <br>

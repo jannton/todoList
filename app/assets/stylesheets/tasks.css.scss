@@ -1,0 +1,21 @@
+/*
+ * Simple CSS stylesheet for a navigation bar and flash messages.
+ */ 
+
+
+body {
+    background-color: #D3D3D3;
+}
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 2px;
+    text-align: left;
+    border:none;
+}
+table#t01 {
+    width: 100%;    
+    background-color: white;
+}
