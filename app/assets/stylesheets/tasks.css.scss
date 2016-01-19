@@ -2,20 +2,70 @@
  * Simple CSS stylesheet for a navigation bar and flash messages.
  */ 
 
-
+h1 {
+	font-size: 300%;
+   	font-family: Arial;
+   	top: 10px;
+   	text-align:center;
+   	width: 80%;
+   	bottom: 0px;
+   	color: #565656;
+   	margin-left:auto; 
+    margin-right:auto; 
+}
 body {
     background-color: #D3D3D3;
 }
-table, th, td {
-    border: 2px solid black;
+
+table {
+	border: 1px solid black;
+   	margin-top:0px;
+    margin-left:auto; 
+    margin-right:auto; 
+    background-color: white;
+    border-spacing:0;
+    border:solid black 1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+    font-family: Arial;
+	font-size: 14px;
+	color: #565656;
+	border-bottom: none;
+}
+table#t2 {
+	border-bottom: none;
+	border: 1px solid black;
+   	margin-top:0px;
+    margin-left:auto; 
+    margin-right:auto; 
+    background-color: white;
+    border-spacing:0;
+    border:solid black 1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+    font-family: Arial;
+	font-size: 14px;
+	color: #565656;
+	width: 200px;
+}
+td {
+	padding: 13px;
+}
+tr, td {
+
+    border-bottom: solid 1px #000;
     border-collapse: collapse;
 }
-th, td {
-    padding: 2px;
-    text-align: left;
-    border:none;
+
+td.checkbox {
+	width: 2px;
 }
-table#t01 {
-    width: 100%;    
-    background-color: white;
+td.task_name{
+	width: "30%";
+}
+td.edit{
+	width: "2%";
+}
+td.delete{
+	width: "2%";
 }

@@ -5,9 +5,9 @@ class TasksController < ApplicationController
   	#@tasks = Task.all
   	@task = Task.new
 
-  	#creating instance that contains tasks attribute with null value"
-  	@incomplete_tasks = Task.where(:checked => false)
-  	@completed_tasks = Task.where(:checked => true)
+  	#creating instance that contains tasks attribute with null value" in most recent to least recent
+  	@incomplete_tasks = Task.where(:checked => false).order('created_at DESC')
+  	@completed_tasks = Task.where(:checked => true).order('updated_at ASC')
   end
 
   #creating a new task
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   		#redirect home page
   		redirect_to root_path
   	else
-  		flash[:notice] = 'Unable to add task!'
+  		flash[:notice] = 'Unable to add task. Cannot leave field blank!'
   		#if we are unable to save the task bc it fails the validation then
   		#go back to home page with task form
   		redirect_to :back

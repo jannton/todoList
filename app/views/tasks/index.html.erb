@@ -3,34 +3,46 @@
   <p class="notice"><%= flash[:notice] %></p>
 <% end %>
 
-<h1> To Do --></h1>
-<%= form_tag completed_tasks_path, :method => :put do %>
-	<table id="t01">
+
+<h1> To Do -></h1>
+<br>
+<table>
+	<tr><td><%= form_tag completed_tasks_path, :method => :put do %>
+	<table align="center">
 		<% @incomplete_tasks.each do |task| %>
 			<tr>
 			<%# column for each attribute %>
-			<td><%= check_box_tag "task_ids[]", task.id %></td>
-			<td><%= task.task_name %></td>
-			<td><%= link_to 'Edit', edit_task_path(task) %></td>
-			<td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?"} %></td>
+			<td class="checkbox"><%= check_box_tag "task_ids[]", task.id %></td>
+			<td class="task_name"><b><%= task.task_name %></b></td>
+			<td class="edit"><%= link_to 'Edit', edit_task_path(task) %></td>
+			<td class="delete"><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?"} %></td>
 			</tr>
 		<% end %>
 		<% @completed_tasks.each do |task| %>
 			<tr>
 			<%# column for each attribute %>
 			<%# seperate array for completed tasks, this will allow if/else statement in complete action in controller work for flash notice %>
-			<td><%= check_box_tag "task_idss[]", task.id, :id => "task.id_#{task.id}" -%></td>
-			<td><%= task.task_name %></td>
-			<td><%= link_to 'Edit', edit_task_path(task) %></td>
-			<td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?"} %></td>
+			<td class="checkbox"><%= check_box_tag "task_idss[]", task.id, :id => "task.id_#{task.id}" -%></td>
+			<td class="task_name"><b><%= task.task_name %></b></td>
+			<td class="edit"><%= link_to 'Edit', edit_task_path(task) %></td>
+			<td class="delete"><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure you want to delete this task?"} %></td>
 			</tr>
 		<% end %>
 	</table>
 	<br>
-	<%= submit_tag 'Mark as Completed' %>
-<% end %>
-<br>
+	<%= submit_tag 'Mark as Complete' %>
+	<% end %>
+	<td></tr>
 
-<%= render 'taskform' %>
+
+	<tr><td><%= render 'taskform' %></tr></td>
+</table>
+		
+
+
+
+
+		
+
 
 
