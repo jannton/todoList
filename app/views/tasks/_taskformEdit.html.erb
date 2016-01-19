@@ -1,0 +1,9 @@
+<%# had to update edit task because its display is different now %>
+
+<%= form_for @task do |f| %>
+  <p>
+    <%= f.text_field :task_name, size: 30 %>
+    <br>
+    <%= f.submit %>
+  </p>
+<% end %>

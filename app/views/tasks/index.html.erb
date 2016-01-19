@@ -1,11 +1,10 @@
 <%# allows for flash notice on view %>
 <% if flash[:notice] %>
-  <p class="notice"><%= flash[:notice] %></p>
+  <p class="notice"><div id="flash"><%= flash[:notice] %></div></p>
 <% end %>
 
 
 <h1> To Do -></h1>
-<br>
 <table>
 	<tr><td><%= form_tag completed_tasks_path, :method => :put do %>
 	<table align="center">
@@ -30,12 +29,12 @@
 		<% end %>
 	</table>
 	<br>
-	<%= submit_tag 'Mark as Complete' %>
+	<%= submit_tag 'Mark as Complete'%>
+
 	<% end %>
 	<td></tr>
 
-
-	<tr><td><%= render 'taskform' %></tr></td>
+	<tr class="none"><td><%= render 'taskform' %></tr></td>
 </table>
 		
 

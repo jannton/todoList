@@ -3,10 +3,12 @@
 <%= form_for @task do |f| %>
 
   <p>
-    <%= f.text_field :task_name%>
+    <%= f.text_field :task_name, size: 43 %>
+
+    <%= f.submit %>
   </p>
  
   <p>
-    <%= f.submit %>
+    
   </p>
 <% end %>
