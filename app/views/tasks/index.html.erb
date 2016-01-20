@@ -7,7 +7,7 @@
 <h1> To Do -></h1>
 <table>
 	<tr><td><%= form_tag completed_tasks_path, :method => :put do %>
-	<div style="margin-left:25px;"><table>
+	<div style="margin-left:26px;"><table>
 		<% @incomplete_tasks.each do |task| %>
 			<tr>
 			<%# column for each attribute %>
@@ -34,7 +34,7 @@
 	<% end %>
 	<td></tr>
 
-	<tr class="none"><td><div style="margin-left:10px;"><%= render 'taskform' %></div></tr></td>
+	<tr class="none"><td><div style="margin-left:20px;"><%= render 'taskform' %></div></tr></td>
 </table>
 		
 
