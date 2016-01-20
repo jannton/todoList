@@ -13,3 +13,5 @@ Rails.application.config.assets.version = '1.0'
 # Precompile css asset app/assets/stylesheets/tasks.css.scss
 # This overall helps reduce number of http requests from the browser by preprocessing 
 Rails.application.config.assets.precompile += %w( tasks.css )
+Rails.application.config.assets.precompile += %w( delete.png )
+Rails.application.config.assets.precompile += %w( edit-icon.png )
